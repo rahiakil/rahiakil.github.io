@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Distribution Simulator | Vendor Rubric</title>
+  <title>Committee Decision | Vendor Rubric</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -14,10 +14,10 @@
     <div class="wrap nav">
       <a class="brand" href="index.html">Vendor Rubric</a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="index.html">Home</a>
         <a href="rubric.html">Our Rubric</a>
-        <a href="distribution.html">Distribution</a>
+        <a href="distribution.html">Decide</a>
         <a href="scorecard.html">Scorecard</a>
+        <a href="index.html">Home</a>
         <a href="vendors-need.html">For Vendors</a>
         <a href="dietary.html">Dietary Guide</a>
         <a href="lessons.html">Lessons</a>
@@ -28,37 +28,71 @@
   </header>
 
   <main class="wrap section">
-    <h1 style="font-family:var(--font-display);letter-spacing:-0.02em;margin:0 0 0.5rem;">Distribution simulator</h1>
-    <p class="intro">Shift a slot from one vendor to another and watch annual share, consecutive majors, and which rubric pillars light up. Soft cap: 35% of major slots. Soft consecutive cap: 2 major events in a row.</p>
+    <p class="badge">Food committee · bring this screen to the decision call</p>
+    <h1 style="font-family:var(--font-display);letter-spacing:-0.02em;margin:0.4rem 0 0.5rem;">Decide with the rubric first</h1>
+    <p class="intro">Start with the gates and weights. Then assign vendors for this event and check whether rotation and scale still look fair. Open questions for later stay in the analysis report; do not block tonight’s call on them.</p>
 
-    <div class="cta-row" style="margin-bottom:1rem;">
-      <button class="btn secondary" type="button" id="resetBtn">Reset to 2026 baseline</button>
-      <button class="btn" type="button" id="exportBtn">Export CSV</button>
-    </div>
+    <!-- STEP 1: RUBRIC DETAILS FIRST -->
+    <section class="panel" style="margin-top:1.25rem;" aria-labelledby="rubric-first">
+      <h2 id="rubric-first" style="font-family:var(--font-display);margin:0 0 0.35rem;font-size:1.55rem;">1. Rubric we use tonight</h2>
+      <p class="muted small" style="margin-top:0;">Must-have gates are pass/fail. Scored criteria sum to 100. Four named pillars from our decline doctrine: menu variety, vendor rotation, pricing, event scale.</p>
 
-    <div class="dist-layout">
-      <div class="panel">
-        <label class="field" for="eventFilter">Event</label>
-        <select id="eventFilter"></select>
-        <div id="slots" style="margin-top:1rem;"></div>
+      <div class="grid-2" style="margin-top:1rem;">
+        <div>
+          <h3 style="margin-top:0;">Must-have gates</h3>
+          <div id="gates"></div>
+        </div>
+        <div>
+          <h3 style="margin-top:0;">Weights (sum 100)</h3>
+          <div id="weights"></div>
+          <p class="small muted" id="weightSum"></p>
+        </div>
       </div>
-      <div>
-        <div class="panel" style="margin-bottom:1rem;">
-          <h3>Share of major slots</h3>
-          <p class="muted small">Bars turn amber near the cap and red when over-concentrated.</p>
-          <div class="vendor-bars" id="shareBars"></div>
-        </div>
-        <div class="panel" style="margin-bottom:1rem;">
-          <h3>Fairness alerts</h3>
-          <div id="alerts"></div>
-        </div>
+
+      <h3 style="margin-top:1.25rem;">1–5 anchors (committee reference)</h3>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead><tr><th>Criterion</th><th>Weight</th><th>1</th><th>3</th><th>5</th></tr></thead>
+          <tbody id="anchors"></tbody>
+        </table>
+      </div>
+      <p class="small muted" style="margin-bottom:0;">Full printable page: <a href="rubric.html">Our Rubric</a>. Independent scoring form: <a href="scorecard.html">Scorecard</a>.</p>
+    </section>
+
+    <!-- STEP 2: THEN DISTRIBUTION -->
+    <section style="margin-top:1.75rem;" aria-labelledby="assign-next">
+      <h2 id="assign-next" style="font-family:var(--font-display);margin:0 0 0.35rem;font-size:1.55rem;">2. Assign vendors for this event</h2>
+      <p class="intro" style="margin-top:0;">Shift a slot and watch annual share. Soft cap: 35% of major slots. Soft consecutive cap: 2 major events in a row.</p>
+
+      <div class="cta-row" style="margin-bottom:1rem;">
+        <button class="btn secondary" type="button" id="resetBtn">Reset to 2026 baseline</button>
+        <button class="btn" type="button" id="exportBtn">Export CSV</button>
+      </div>
+
+      <div class="dist-layout">
         <div class="panel">
-          <h3>Rubric impact for this choice</h3>
-          <p class="muted small">How this assignment touches rotation, scale fit, menu variety, and pricing.</p>
-          <div id="rubricHit"></div>
+          <label class="field" for="eventFilter">Event</label>
+          <select id="eventFilter"></select>
+          <div id="slots" style="margin-top:1rem;"></div>
+        </div>
+        <div>
+          <div class="panel" style="margin-bottom:1rem;">
+            <h3>Share of major slots</h3>
+            <p class="muted small">Bars turn amber near the cap and red when over-concentrated.</p>
+            <div class="vendor-bars" id="shareBars"></div>
+          </div>
+          <div class="panel" style="margin-bottom:1rem;">
+            <h3>Fairness alerts</h3>
+            <div id="alerts"></div>
+          </div>
+          <div class="panel">
+            <h3>Rubric impact for this choice</h3>
+            <p class="muted small">How this assignment touches rotation, scale fit, menu variety, and pricing.</p>
+            <div id="rubricHit"></div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <footer>

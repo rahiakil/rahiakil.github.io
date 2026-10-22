@@ -14,10 +14,10 @@
     <div class="wrap nav">
       <a class="brand" href="index.html">Vendor Rubric</a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="index.html">Home</a>
         <a href="rubric.html">Our Rubric</a>
-        <a href="distribution.html">Distribution</a>
+        <a href="distribution.html">Decide</a>
         <a href="scorecard.html">Scorecard</a>
+        <a href="index.html">Home</a>
         <a href="vendors-need.html">For Vendors</a>
         <a href="dietary.html">Dietary Guide</a>
         <a href="lessons.html">Lessons</a>
@@ -31,7 +31,7 @@
     <section class="hero">
       <p class="badge">Seattle cultural community · ~10–11 events / year</p>
       <h1>How we choose food partners</h1>
-      <p class="lede">This site turns an informal mental checklist into a clear, evidence-backed rubric any prospective caterer can read, and any committee member can apply without guessing.</p>
+      <p class="lede">Show this rubric to the food committee first. Then use the decision screen to place vendors without over-concentrating opportunity.</p>
       <div class="pillars" aria-label="Four decision pillars">
         <div class="pillar"><strong>Menu variety</strong><span>Occasion-true dishes, veg and non-veg, kids when needed</span></div>
         <div class="pillar"><strong>Vendor rotation</strong><span>Fair annual opportunity across trusted partners</span></div>
@@ -39,8 +39,26 @@
         <div class="pillar"><strong>Event scale</strong><span>Right number of vendors for 40 guests or 700</span></div>
       </div>
       <div class="cta-row">
-        <a class="btn" href="rubric.html">See the weighted scorecard</a>
-        <a class="btn secondary" href="distribution.html">Try the distribution simulator</a>
+        <a class="btn" href="distribution.html">Open committee decision screen</a>
+        <a class="btn secondary" href="rubric.html">Full weighted scorecard</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Rubric at a glance</h2>
+      <p class="intro">Gates first, then weighted scores. Open questions stay parked for a later review; they do not change tonight’s process.</p>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Must-have gates</h3>
+          <div id="homeGates"></div>
+        </div>
+        <div class="panel">
+          <h3>Weights (sum 100)</h3>
+          <div id="homeWeights"></div>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="distribution.html">Continue to vendor placement</a>
       </div>
     </section>
 
@@ -61,15 +79,6 @@
         <p class="small muted">At XL scale we often run two evening options so guests have choice and partners share opportunity.</p>
       </div>
     </section>
-
-    <section class="section">
-      <h2>Vendor philosophy</h2>
-      <p class="intro">Quality and warmth matter. So does fairness. A partner we love may still sit out a given dinner when rotation, pricing, or scale say another mix serves the community better. When we decline, we say so courteously and keep the door open.</p>
-      <div class="cta-row">
-        <a class="btn secondary" href="vendors-need.html">What we need from you</a>
-        <a class="btn secondary" href="inquiry.html">Copy inquiry email</a>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -78,5 +87,20 @@
     </div>
   </footer>
   <script src="js/site.js"></script>
+  <script>
+    (async function () {
+      const data = await loadJSON("data/rubric.json");
+      document.getElementById("homeGates").innerHTML = data.mustHaveGates.map(g =>
+        `<div class="gate"><span class="badge">Gate</span><div>${g.label}</div></div>`
+      ).join("");
+      const max = Math.max(...data.criteria.map(c => c.weight));
+      document.getElementById("homeWeights").innerHTML = data.criteria.map(c =>
+        `<div class="bar-row"><span>${c.label}</span><div class="bar-track"><div class="bar-fill" data-w="${(c.weight/max)*100}"></div></div><strong>${c.weight}</strong></div>`
+      ).join("");
+      requestAnimationFrame(() => {
+        document.querySelectorAll("#homeWeights .bar-fill").forEach(el => { el.style.width = el.dataset.w + "%"; });
+      });
+    })();
+  </script>
 </body>
 </html>

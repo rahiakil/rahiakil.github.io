@@ -14,6 +14,44 @@
   const alertsEl = document.getElementById("alerts");
   const rubricHitEl = document.getElementById("rubricHit");
 
+  // Rubric details first (committee reference before assignments)
+  const gatesEl = document.getElementById("gates");
+  const weightsEl = document.getElementById("weights");
+  if (gatesEl && weightsEl) {
+    gatesEl.innerHTML = rubric.mustHaveGates
+      .map(
+        (g) =>
+          `<div class="gate"><span class="badge">Gate</span><div>${g.label}</div></div>`
+      )
+      .join("");
+    const maxW = Math.max(...rubric.criteria.map((c) => c.weight));
+    weightsEl.innerHTML = rubric.criteria
+      .map(
+        (c) =>
+          `<div class="bar-row"><span>${c.label}</span><div class="bar-track"><div class="bar-fill" data-w="${(c.weight / maxW) * 100}"></div></div><strong>${c.weight}</strong></div>`
+      )
+      .join("");
+    const sumEl = document.getElementById("weightSum");
+    if (sumEl) {
+      sumEl.textContent =
+        "Total weight: " + rubric.criteria.reduce((s, c) => s + c.weight, 0);
+    }
+    const anchorsEl = document.getElementById("anchors");
+    if (anchorsEl) {
+      anchorsEl.innerHTML = rubric.criteria
+        .map(
+          (c) =>
+            `<tr><td><strong>${c.label}</strong></td><td>${c.weight}</td><td>${c.anchors["1"]}</td><td>${c.anchors["3"]}</td><td>${c.anchors["5"]}</td></tr>`
+        )
+        .join("");
+    }
+    requestAnimationFrame(() => {
+      weightsEl.querySelectorAll(".bar-fill").forEach((el) => {
+        el.style.width = el.dataset.w + "%";
+      });
+    });
+  }
+
   data.events.forEach((e) => {
     const opt = document.createElement("option");
     opt.value = e.id;
