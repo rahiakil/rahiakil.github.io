@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scorecard Tool | Vendor Rubric</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">Vendor Rubric</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="rubric.html">Our Rubric</a>
+        <a href="distribution.html">Distribution</a>
+        <a href="scorecard.html">Scorecard</a>
+        <a href="vendors-need.html">For Vendors</a>
+        <a href="dietary.html">Dietary Guide</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="inquiry.html">Inquiry</a>
+        <button class="icon-btn" type="button" onclick="toggleTheme()" aria-label="Toggle theme">Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap section">
+    <h1 style="font-family:var(--font-display);margin:0 0 0.5rem;">Tasting & evaluation worksheet</h1>
+    <p class="intro">Each committee member scores independently (1–5). Average later to reduce individual bias. Nothing leaves your browser.</p>
+
+    <div class="grid-2">
+      <div class="panel">
+        <label class="field" for="vendorName">Vendor label</label>
+        <input id="vendorName" placeholder="e.g. Vendor 7" />
+        <label class="field" for="eventName">Event</label>
+        <input id="eventName" placeholder="e.g. Kali dinner" />
+        <label class="field" for="evaluator">Evaluator (initials only)</label>
+        <input id="evaluator" placeholder="e.g. MB" />
+
+        <h3 style="margin-top:1.25rem;">Gates</h3>
+        <div id="gateChecks"></div>
+
+        <h3 style="margin-top:1.25rem;">Scores</h3>
+        <div class="score-grid" id="scores"></div>
+      </div>
+      <div class="panel">
+        <p class="muted small">Weighted total (0–100)</p>
+        <p class="total-score" id="total">0</p>
+        <p id="gateStatus" class="badge warn">Gates incomplete</p>
+        <p class="muted small" id="detail"></p>
+        <div class="cta-row">
+          <button class="btn" type="button" id="csvBtn">Export CSV</button>
+          <button class="btn secondary" type="button" onclick="window.print()">Print / PDF</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer><div class="wrap"><p>Client-side only. No data is uploaded.</p></div></footer>
+  <script src="js/site.js"></script>
+  <script>
+    (async function () {
+      const data = await loadJSON("data/rubric.json");
+      const scoresEl = document.getElementById("scores");
+      const gateEl = document.getElementById("gateChecks");
+      const values = {};
+
+      gateEl.innerHTML = data.mustHaveGates.map(g =>
+        `<label class="gate"><input type="checkbox" data-gate="${g.id}" /> <span>${g.label}</span></label>`
+      ).join("");
+
+      scoresEl.innerHTML = data.criteria.map(c => {
+        values[c.id] = 3;
+        return `<div class="score-item">
+          <div>
+            <strong>${c.label}</strong> <span class="muted small">w=${c.weight}</span>
+            <div class="muted small">1: ${c.anchors["1"]} · 5: ${c.anchors["5"]}</div>
+            <input type="range" min="1" max="5" step="1" value="3" data-id="${c.id}" />
+          </div>
+          <strong data-val="${c.id}">3</strong>
+        </div>`;
+      }).join("");
+
+      function recalc() {
+        let sum = 0;
+        data.criteria.forEach(c => {
+          sum += (values[c.id] / 5) * c.weight;
+        });
+        document.getElementById("total").textContent = sum.toFixed(1);
+        const gates = [...document.querySelectorAll("[data-gate]")];
+        const allPass = gates.every(g => g.checked);
+        const st = document.getElementById("gateStatus");
+        st.textContent = allPass ? "All gates passed" : "Gates incomplete / failed";
+        st.className = "badge " + (allPass ? "ok" : "warn");
+        document.getElementById("detail").textContent = allPass
+          ? "Eligible for award comparison."
+          : "Do not award until failed gates are fixed.";
+      }
+
+      scoresEl.querySelectorAll("input[type=range]").forEach(inp => {
+        inp.addEventListener("input", () => {
+          values[inp.dataset.id] = Number(inp.value);
+          document.querySelector(`[data-val="${inp.dataset.id}"]`).textContent = inp.value;
+          recalc();
+        });
+      });
+      gateEl.querySelectorAll("input").forEach(inp => inp.addEventListener("change", recalc));
+      recalc();
+
+      document.getElementById("csvBtn").addEventListener("click", () => {
+        const rows = [["vendor","event","evaluator","gates_pass","criterion","weight","score_1to5","weighted"]];
+        const gatesPass = [...document.querySelectorAll("[data-gate]")].every(g => g.checked);
+        const v = document.getElementById("vendorName").value || "unnamed";
+        const e = document.getElementById("eventName").value || "unnamed";
+        const ev = document.getElementById("evaluator").value || "anon";
+        data.criteria.forEach(c => {
+          const s = values[c.id];
+          rows.push([v,e,ev,gatesPass,c.id,c.weight,s,((s/5)*c.weight).toFixed(2)]);
+        });
+        downloadText("vendor-scorecard.csv", rows.map(r => r.join(",")).join("\n"), "text/csv");
+      });
+    })();
+  </script>
+</body>
+</html>

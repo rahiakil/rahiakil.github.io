@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Distribution Simulator | Vendor Rubric</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">Vendor Rubric</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="rubric.html">Our Rubric</a>
+        <a href="distribution.html">Distribution</a>
+        <a href="scorecard.html">Scorecard</a>
+        <a href="vendors-need.html">For Vendors</a>
+        <a href="dietary.html">Dietary Guide</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="inquiry.html">Inquiry</a>
+        <button class="icon-btn" type="button" onclick="toggleTheme()" aria-label="Toggle theme">Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap section">
+    <h1 style="font-family:var(--font-display);letter-spacing:-0.02em;margin:0 0 0.5rem;">Distribution simulator</h1>
+    <p class="intro">Shift a slot from one vendor to another and watch annual share, consecutive majors, and which rubric pillars light up. Soft cap: 35% of major slots. Soft consecutive cap: 2 major events in a row.</p>
+
+    <div class="cta-row" style="margin-bottom:1rem;">
+      <button class="btn secondary" type="button" id="resetBtn">Reset to 2026 baseline</button>
+      <button class="btn" type="button" id="exportBtn">Export CSV</button>
+    </div>
+
+    <div class="dist-layout">
+      <div class="panel">
+        <label class="field" for="eventFilter">Event</label>
+        <select id="eventFilter"></select>
+        <div id="slots" style="margin-top:1rem;"></div>
+      </div>
+      <div>
+        <div class="panel" style="margin-bottom:1rem;">
+          <h3>Share of major slots</h3>
+          <p class="muted small">Bars turn amber near the cap and red when over-concentrated.</p>
+          <div class="vendor-bars" id="shareBars"></div>
+        </div>
+        <div class="panel" style="margin-bottom:1rem;">
+          <h3>Fairness alerts</h3>
+          <div id="alerts"></div>
+        </div>
+        <div class="panel">
+          <h3>Rubric impact for this choice</h3>
+          <p class="muted small">How this assignment touches rotation, scale fit, menu variety, and pricing.</p>
+          <div id="rubricHit"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap"><p>Baseline assignments are anonymized aggregates from the 2026 food chat. They are a planning aid, not a contract history.</p></div>
+  </footer>
+  <script src="js/site.js"></script>
+  <script src="js/distribution.js"></script>
+</body>
+</html>

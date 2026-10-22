@@ -1,0 +1,16 @@
+date,event,slot,vendor_id,score,gates_pass,notes
+2026-06-20,Community Day,lunch,V2,4.4,true,Praised lunch boxes; on-time pickup window
+2026-06-20,Community Day,snacks,V3,3.8,true,Invoice path friction later
+2026-06-20,Community Day,dinner,V4,4.2,true,Last-minute +2 accommodated
+2026-06,Hike Day,dinner,V5,3.5,true,Invoice present
+2026-09,Agomoni,rolls,V7,4.0,true,139 rolls; $2585 cost observed
+2026-09,Agomoni,dinner,V5,3.2,true,Revenue check before pay
+2026-10,External Artist Night,evening_a,V6,3.6,true,Dual vendor fairness design
+2026-10,External Artist Night,evening_b,V7,4.1,true,Dual vendor fairness design
+2026-10,Sharodotsav Weekend,sat_lunch,V9,4.0,true,Tray catering XL
+2026-10,Sharodotsav Weekend,sun_lunch,V9,4.0,true,Tray catering XL
+2026-10,Sharodotsav Weekend,evening,V5,2.4,false,Late dinner; refunds discussion
+2026-10,Sharodotsav Weekend,snacks,V8,3.7,true,Snack partner
+2026-11,Kali / Deepaboli,dinner_a,V7,4.0,true,Menu 1
+2026-11,Kali / Deepaboli,dinner_b,V6,3.8,true,Menu 2
+2026-11,Kali / Deepaboli,snacks,V8,3.5,true,Reduced snack variation planned

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Rubric | Vendor Rubric</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">Vendor Rubric</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="rubric.html">Our Rubric</a>
+        <a href="distribution.html">Distribution</a>
+        <a href="scorecard.html">Scorecard</a>
+        <a href="vendors-need.html">For Vendors</a>
+        <a href="dietary.html">Dietary Guide</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="inquiry.html">Inquiry</a>
+        <button class="icon-btn" type="button" onclick="toggleTheme()" aria-label="Toggle theme">Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap section">
+    <h1 style="font-family:var(--font-display);margin:0 0 0.5rem;">Weighted scorecard</h1>
+    <p class="intro">Must-have gates are pass/fail. Scored criteria sum to 100. Weights were derived from how often a factor decided or blocked an award in the 2026 chats.</p>
+
+    <div class="grid-2" style="margin-top:1.5rem;">
+      <div class="panel">
+        <h3>Must-have gates</h3>
+        <div id="gates"></div>
+      </div>
+      <div class="panel">
+        <h3>Weight mix</h3>
+        <div id="weights"></div>
+        <p class="small muted" id="weightSum"></p>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:1.25rem;">
+      <h3>1–5 anchors</h3>
+      <table>
+        <thead><tr><th>Criterion</th><th>1</th><th>3</th><th>5</th><th>Verify</th></tr></thead>
+        <tbody id="anchors"></tbody>
+      </table>
+    </div>
+
+    <div class="panel" style="margin-top:1.25rem;">
+      <h3>Event-type focus</h3>
+      <p class="muted small">Same gates always apply. Emphasize the pillars that match the night.</p>
+      <div class="grid-3" id="eventTypes"></div>
+    </div>
+  </main>
+
+  <footer><div class="wrap"><p>See analysis/report.md in the repo for thread citations.</p></div></footer>
+  <script src="js/site.js"></script>
+  <script>
+    (async function () {
+      const data = await loadJSON("data/rubric.json");
+      document.getElementById("gates").innerHTML = data.mustHaveGates.map(g =>
+        `<div class="gate"><span class="badge">Gate</span><div>${g.label}</div></div>`
+      ).join("");
+
+      const max = Math.max(...data.criteria.map(c => c.weight));
+      document.getElementById("weights").innerHTML = data.criteria.map(c =>
+        `<div class="bar-row"><span>${c.label}</span><div class="bar-track"><div class="bar-fill" data-w="${(c.weight/max)*100}"></div></div><strong>${c.weight}</strong></div>`
+      ).join("");
+      document.getElementById("weightSum").textContent = "Total weight: " + data.criteria.reduce((s,c)=>s+c.weight,0);
+      requestAnimationFrame(() => {
+        document.querySelectorAll(".bar-fill").forEach(el => { el.style.width = el.dataset.w + "%"; });
+      });
+
+      const verify = {
+        pricing: "Written quote",
+        reliability: "ETA + backup in writing",
+        quality: "Tasting / prior feedback",
+        menu_variety: "Menu vs brief",
+        rotation: "Annual ledger",
+        scale_fit: "Headcount band",
+        dietary: "Labeled SKUs",
+        logistics: "Buffer terms",
+        relationship: "Response / invoice hygiene"
+      };
+      document.getElementById("anchors").innerHTML = data.criteria.map(c =>
+        `<tr><td><strong>${c.label}</strong></td><td>${c.anchors["1"]}</td><td>${c.anchors["3"]}</td><td>${c.anchors["5"]}</td><td>${verify[c.id]||""}</td></tr>`
+      ).join("");
+
+      document.getElementById("eventTypes").innerHTML = data.eventTypes.map(e =>
+        `<div class="slot-card"><strong>${e.label}</strong><div class="muted small">Typical scale ${e.scale}</div></div>`
+      ).join("");
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vendor Inquiry | Vendor Rubric</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">Vendor Rubric</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="rubric.html">Our Rubric</a>
+        <a href="distribution.html">Distribution</a>
+        <a href="scorecard.html">Scorecard</a>
+        <a href="vendors-need.html">For Vendors</a>
+        <a href="dietary.html">Dietary Guide</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="inquiry.html">Inquiry</a>
+        <button class="icon-btn" type="button" onclick="toggleTheme()" aria-label="Toggle theme">Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap section">
+    <h1 style="font-family:var(--font-display);margin:0 0 0.5rem;">Vendor inquiry templates</h1>
+    <p class="intro">Copy, personalize the bracketed fields, and send. Link vendors to the public rubric page so expectations are shared up front.</p>
+
+    <div class="panel">
+      <div class="cta-row">
+        <button class="btn" type="button" id="copyEmail">Copy email</button>
+      </div>
+      <label class="field">Inquiry email</label>
+      <textarea id="emailTpl" rows="16">Subject: Catering inquiry for [EVENT NAME] on [DATE]
+
+Hello [VENDOR CONTACT],
+
+We are the food team for a Seattle-area cultural community that hosts about 10–11 events each year. We are planning [EVENT NAME] for roughly [HEADCOUNT] guests (scale band [S/M/L/XL]).
+
+We choose partners using a published rubric: menu variety, vendor rotation across the year, pricing, and event scale, along with quality and on-time delivery. You can read the brief here:
+[RUBRIC SITE URL]
+
+Could you please send a quote that includes:
+• Per-head or per-tray pricing (delivery included or itemized)
+• Veg and non-veg options (no beef or pork)
+• Deposit, cancellation, and headcount tolerance
+• Exact delivery or setup window and a backup if delayed
+• Invoice path to our treasurer email (we will provide)
+
+We value clear communication and warm long-term relationships. Even when rotation means we cannot award every date, we hope to keep building options with trusted kitchens like yours.
+
+Thank you,
+[YOUR NAME]
+Food Team
+</textarea>
+    </div>
+
+    <div class="panel" style="margin-top:1.25rem;">
+      <div class="cta-row">
+        <button class="btn" type="button" id="copyDecline">Copy decline note</button>
+      </div>
+      <label class="field">Courteous decline (rotation / scale)</label>
+      <textarea id="declineTpl" rows="12">Hello [VENDOR CONTACT],
+
+Thank you for the quote and menu options for [EVENT NAME]. We truly appreciate the partnership you bring.
+
+For this event, after reviewing menu variety, vendor rotation, pricing, and event scale, our committee is proceeding with a different mix. This does not reduce our regard for your food quality and service.
+
+You remain a valued partner. We look forward to working together again on upcoming community events.
+
+Warm regards,
+Food Team
+</textarea>
+    </div>
+  </main>
+
+  <footer><div class="wrap"><p>Decline wording mirrors the committee’s Oct 2026 four-pillar message, anonymized for reuse.</p></div></footer>
+  <script src="js/site.js"></script>
+  <script>
+    function copyFrom(id) {
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.value).then(() => alert("Copied."));
+    }
+    document.getElementById("copyEmail").onclick = () => copyFrom("emailTpl");
+    document.getElementById("copyDecline").onclick = () => copyFrom("declineTpl");
+  </script>
+</body>
+</html>

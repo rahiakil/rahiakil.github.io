@@ -1,0 +1,128 @@
+# Community Vendor Rubric — living configuration
+# Weights sum to 100. Must-have gates are pass/fail and sit outside the score.
+
+community:
+  display_name: "Community Cultural Events (Seattle)"
+  events_per_year: "10–11"
+  public_site_note: "Vendor names default to anonymized labels unless approved below."
+
+publication:
+  # Set true only when the committee agrees a trade name may appear publicly.
+  vendors:
+    Vendor 1: false
+    Vendor 2: false
+    Vendor 3: false
+    Vendor 4: false
+    Vendor 5: false
+    Vendor 6: false
+    Vendor 7: false
+    Vendor 8: false
+    Vendor 9: false
+
+must_have_gates:
+  - id: veg_nonveg_clarity
+    label: Clear veg and non-veg options when both are needed
+    fail_action: Do not award until menu and serving plan are written
+  - id: on_time_commitment
+    label: Written on-time delivery or setup commitment with a backup plan
+    fail_action: Do not award for time-critical venue events
+  - id: transparent_pricing
+    label: Per-head or per-tray price that includes delivery; fees stated separately
+    fail_action: Request revised quote
+  - id: invoice_path
+    label: Willing to invoice treasurer@[ORG] with itemized quantities
+    fail_action: Do not pay until process is agreed
+  - id: no_beef_pork
+    label: No beef or pork on community menus (Bengali cultural default)
+    fail_action: Reject menu items that violate this
+
+criteria:
+  - id: pricing
+    label: Pricing and fee transparency
+    weight: 18
+    derivation: "Most frequent decisive factor: $20 lunch rejected for max $15; PayPal fee and member markup checked on every SKU."
+  - id: reliability
+    label: Reliability and on-time delivery
+    weight: 16
+    derivation: "High-impact failure when dinner arrived late at a large festival evening; team had repeatedly asked for on-time delivery."
+  - id: quality
+    label: Food quality and authenticity
+    weight: 14
+    derivation: "Mixed salty-biryani feedback was cited as reason not to award a large evening slot to one vendor."
+  - id: menu_variety
+    label: Menu variety and occasion fit
+    weight: 12
+    derivation: "Large events explicitly sought two cuisines; Kali Puja kept both khichuri and regular veg/non-veg after a close poll."
+  - id: rotation
+    label: Vendor rotation and fair opportunity
+    weight: 12
+    derivation: "Decline letter and dual-vendor plan for 700-seat nights both named fairness and annual distribution."
+  - id: scale_fit
+    label: Event scale fit
+    weight: 10
+    derivation: "Snack stalls questioned under 150–200 headcount; dual vendors preferred above ~600–700."
+  - id: dietary
+    label: Dietary labeling and veg/non-veg balance
+    weight: 8
+    derivation: "Every major order tracked veg vs non-veg counts; Sunday veg was noted as very small and tray multipliers discussed."
+  - id: logistics
+    label: Logistics and headcount flexibility
+    weight: 6
+    derivation: "Last-minute +1/+2 dinner adds praised; tray-vs-person math and buffer debates recurred."
+  - id: relationship
+    label: Community relationship and communication
+    weight: 4
+    derivation: "Warm long-term partners still rotated out when scale and fairness required it; invoice follow-ups mattered."
+
+event_types:
+  festival_dinner:
+    label: Festival dinner (tray catering)
+    weight_overrides: { reliability: 20, menu_variety: 14, pricing: 14, scale_fit: 12 }
+  snack_gathering:
+    label: Snack-only gathering
+    weight_overrides: { pricing: 20, logistics: 12, quality: 16, rotation_fit: 14 }
+  sweets_occasion:
+    label: Sweets-focused occasion
+    weight_overrides: { quality: 22, pricing: 16, menu_variety: 14 }
+  large_headcount:
+    label: Large headcount / external artist night
+    weight_overrides: { scale_fit: 16, rotation: 16, reliability: 18, menu_variety: 14 }
+  volunteer_lunch:
+    label: Volunteer / staff lunch boxes
+    weight_overrides: { pricing: 24, reliability: 20, logistics: 12 }
+
+pricing_benchmarks:
+  # Observed in 2026 chats (member-facing or vendor-quoted). Marked observed.
+  lunch_box_max_usd: 15
+  lunch_box_observed_range: "10.99–12 (Vendor 2); 20 declined (Vendor 1)"
+  snack_box_range: "8.99–11.99 (Vendor 3)"
+  tea_per_person_declined: 3.50
+  festival_veg_sku: "15–17"
+  festival_nonveg_sku: "19–21"
+  sweets_addon: "1.50–2.50"
+  rolls_agomoni_total: "2585 for 139 rolls (Vendor 7)"
+  snack_invoice_uttoron_day: "395.62 (Vendor 3)"
+
+scale_bands:
+  - id: S
+    label: Small
+    headcount: "under 100"
+    vendor_guidance: "One lunch or snack vendor; avoid stall fees unless pre-sale is strong."
+  - id: M
+    label: Medium
+    headcount: "100–300"
+    vendor_guidance: "One primary dinner vendor plus optional snack partner; watch concentration."
+  - id: L
+    label: Large
+    headcount: "300–600"
+    vendor_guidance: "Consider two dinner options or dinner + snacks; rotate annual share."
+  - id: XL
+    label: Extra large
+    headcount: "600+"
+    vendor_guidance: "Two evening vendors preferred for choice and fairness; expect 150–200 sales each if dual."
+
+fairness:
+  # Soft caps for interactive distribution tool (committee can edit)
+  max_share_of_annual_events: 0.35
+  max_consecutive_major_awards: 2
+  warn_if_same_vendor_xl_twice: true

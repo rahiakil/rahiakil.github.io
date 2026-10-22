@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lessons Learned | Vendor Rubric</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">Vendor Rubric</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="rubric.html">Our Rubric</a>
+        <a href="distribution.html">Distribution</a>
+        <a href="scorecard.html">Scorecard</a>
+        <a href="vendors-need.html">For Vendors</a>
+        <a href="dietary.html">Dietary Guide</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="inquiry.html">Inquiry</a>
+        <button class="icon-btn" type="button" onclick="toggleTheme()" aria-label="Toggle theme">Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap section">
+    <h1 style="font-family:var(--font-display);margin:0 0 0.5rem;">Lessons learned</h1>
+    <p class="intro">Anonymized gap analysis from the 2026 food chat. Snippets are short paraphrases or quotes under 20 words with no personal identifiers.</p>
+
+    <div class="grid-2">
+      <div class="panel">
+        <h3>Criteria frequency in chat</h3>
+        <div id="freq"></div>
+      </div>
+      <div class="panel">
+        <h3>Year timeline</h3>
+        <ul class="timeline" id="timeline"></ul>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:1.25rem;">
+      <h3>Issues by event (sentiment mix)</h3>
+      <div id="issues"></div>
+    </div>
+
+    <div class="panel" style="margin-top:1.25rem;">
+      <h3>Top gaps (frequency × impact)</h3>
+      <ol>
+        <li>Confirmations and tray math concentrated in too few people</li>
+        <li>No written buffer policy before vendor deadlines</li>
+        <li>Late dinner delivery on a large evening</li>
+        <li>Concentration risk without a rotation tool</li>
+        <li>Some awards advanced without a visible dual-quote comparison</li>
+      </ol>
+    </div>
+  </main>
+
+  <footer><div class="wrap"><p>Full citations live in analysis/report.md and analysis/gaps.csv.</p></div></footer>
+  <script src="js/site.js"></script>
+  <script>
+    (async function () {
+      const data = await loadJSON("data/rubric.json");
+      const max = Math.max(...data.criteriaFrequency.map(x => x.count));
+      const label = id => (data.criteria.find(c => c.id === id) || {label:id}).label;
+      document.getElementById("freq").innerHTML = data.criteriaFrequency.map(x =>
+        `<div class="bar-row"><span>${label(x.id)}</span><div class="bar-track"><div class="bar-fill" data-w="${(x.count/max)*100}"></div></div><strong>${x.count}</strong></div>`
+      ).join("");
+      requestAnimationFrame(() => document.querySelectorAll("#freq .bar-fill").forEach(el => el.style.width = el.dataset.w + "%"));
+
+      document.getElementById("timeline").innerHTML = data.gapsTimeline.map(t =>
+        `<li><strong>${t.month}</strong><br/><span class="muted">${t.label}</span></li>`
+      ).join("");
+
+      document.getElementById("issues").innerHTML = data.issuesByEvent.map(e => {
+        const pct = Math.round(e.sentiment * 100);
+        return `<div class="slot-card"><header><strong>${e.event}</strong><span class="badge">sentiment ~${pct}%</span></header>
+          <ul>${e.issues.map(i => `<li>${i}</li>`).join("")}</ul>
+          <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div></div>`;
+      }).join("");
+    })();
+  </script>
+</body>
+</html>

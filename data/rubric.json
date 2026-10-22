@@ -1,0 +1,67 @@
+{
+  "community": {
+    "name": "Community Cultural Events (Seattle)",
+    "eventsPerYear": "10–11",
+    "philosophy": "We choose vendors using menu variety, vendor rotation, pricing, and event scale, alongside quality and on-time reliability. Warm long-term partners still rotate so opportunity stays fair."
+  },
+  "mustHaveGates": [
+    {"id": "veg_nonveg_clarity", "label": "Clear veg and non-veg options when both are needed"},
+    {"id": "on_time_commitment", "label": "Written on-time delivery or setup commitment with a backup plan"},
+    {"id": "transparent_pricing", "label": "Per-head or per-tray price with delivery included; fees stated separately"},
+    {"id": "invoice_path", "label": "Itemized invoice to the community treasurer inbox"},
+    {"id": "no_beef_pork", "label": "No beef or pork on community menus"}
+  ],
+  "criteria": [
+    {"id": "pricing", "label": "Pricing and fee transparency", "weight": 18, "anchors": {"1": "Over budget or hidden fees", "3": "Within band after negotiation", "5": "Clear all-in quote meeting the band"}},
+    {"id": "reliability", "label": "Reliability and on-time delivery", "weight": 16, "anchors": {"1": "Late with guest impact", "3": "On time with friction", "5": "Exact window; proactive updates"}},
+    {"id": "quality", "label": "Food quality and authenticity", "weight": 14, "anchors": {"1": "Repeated complaints", "3": "Acceptable mixed notes", "5": "Praised and occasion-true"}},
+    {"id": "menu_variety", "label": "Menu variety and occasion fit", "weight": 12, "anchors": {"1": "Narrow menu for diverse crowd", "3": "Solid veg/non-veg core", "5": "Festival-true; dual options when scale needs it"}},
+    {"id": "rotation", "label": "Vendor rotation and fair opportunity", "weight": 12, "anchors": {"1": "Would deepen concentration", "3": "Neutral for annual share", "5": "Improves fairness across the year"}},
+    {"id": "scale_fit", "label": "Event scale fit", "weight": 10, "anchors": {"1": "Wrong capacity for headcount", "3": "Adequate", "5": "Right vendor count for the band"}},
+    {"id": "dietary", "label": "Dietary labeling and veg/non-veg balance", "weight": 8, "anchors": {"1": "Unlabeled or veg shortfall risk", "3": "Counts and labels OK", "5": "Published SKUs and clear labels"}},
+    {"id": "logistics", "label": "Logistics and headcount flexibility", "weight": 6, "anchors": {"1": "Rigid after confirm", "3": "Modest last-minute adds", "5": "Tray math clear; flexible buffer"}},
+    {"id": "relationship", "label": "Community relationship and communication", "weight": 4, "anchors": {"1": "Hard to reach", "3": "Responsive enough", "5": "Proactive; clean invoices"}}
+  ],
+  "eventTypes": [
+    {"id": "festival_dinner", "label": "Festival dinner (trays)", "scale": "L–XL"},
+    {"id": "snack_gathering", "label": "Snack-only gathering", "scale": "S–M"},
+    {"id": "sweets_occasion", "label": "Sweets-focused", "scale": "S–M"},
+    {"id": "large_headcount", "label": "Large / external artist night", "scale": "XL"},
+    {"id": "volunteer_lunch", "label": "Volunteer / staff lunch", "scale": "S"}
+  ],
+  "scaleBands": [
+    {"id": "S", "label": "Small", "headcount": "< 100", "vendors": 1},
+    {"id": "M", "label": "Medium", "headcount": "100–300", "vendors": 1},
+    {"id": "L", "label": "Large", "headcount": "300–600", "vendors": 2},
+    {"id": "XL", "label": "Extra large", "headcount": "600+", "vendors": 2}
+  ],
+  "fairness": {
+    "maxShare": 0.35,
+    "maxConsecutiveMajor": 2
+  },
+  "criteriaFrequency": [
+    {"id": "pricing", "count": 28},
+    {"id": "dietary", "count": 22},
+    {"id": "logistics", "count": 20},
+    {"id": "menu_variety", "count": 18},
+    {"id": "reliability", "count": 14},
+    {"id": "scale_fit", "count": 12},
+    {"id": "relationship", "count": 10},
+    {"id": "quality", "count": 9},
+    {"id": "rotation", "count": 8}
+  ],
+  "gapsTimeline": [
+    {"month": "2026-05", "label": "Survey feedback preferred over chat praise"},
+    {"month": "2026-06", "label": "Hard $15 lunch cap; on-time lunch success"},
+    {"month": "2026-07", "label": "Invoice path friction for snack vendor"},
+    {"month": "2026-09", "label": "Dual-vendor fairness design for 700 seats"},
+    {"month": "2026-10", "label": "Buffer debate; late dinner; four-pillar decline letter"}
+  ],
+  "issuesByEvent": [
+    {"event": "Community day", "issues": ["Budget veto on $20 plate", "Payment follow-up weeks later"], "severity": 0.7},
+    {"event": "Agomoni", "issues": ["Staff meal gap noted", "Revenue vs vendor cost check"], "severity": 0.55},
+    {"event": "Sharodotsav", "issues": ["Buffer conflict", "Late dinner / refunds", "Scanning gaps"], "severity": 0.35},
+    {"event": "Artist night", "issues": ["Kids options late", "Quality history debate"], "sentiment": 0.5},
+    {"event": "Kali / Deepaboli", "issues": ["Scale estimate 500 vs 300 cap", "Rotation decline"], "sentiment": 0.6}
+  ]
+}

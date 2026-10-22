@@ -1,0 +1,42 @@
+{
+  "vendors": [
+    {"id": "V1", "label": "Vendor 1", "specialty": "Plate lunch + tea", "tier": "quote_only", "notes": "Quoted $20 plate; declined on price"},
+    {"id": "V2", "label": "Vendor 2", "specialty": "Lunch boxes", "tier": "active", "notes": "Selected for community-day lunch; praised"},
+    {"id": "V3", "label": "Vendor 3", "specialty": "Bengali snack boxes", "tier": "active", "notes": "Community-day snacks; invoice process friction"},
+    {"id": "V4", "label": "Vendor 4", "specialty": "Dinner boxes", "tier": "active", "notes": "Flexible last-minute adds"},
+    {"id": "V5", "label": "Vendor 5", "specialty": "Dinner catering", "tier": "watch", "notes": "Multiple dinners; late delivery flag on XL evening"},
+    {"id": "V6", "label": "Vendor 6", "specialty": "Evening stall (biryani / chap / Chinese)", "tier": "active", "notes": "Prior quality notes; re-engaged for dual-vendor nights"},
+    {"id": "V7", "label": "Vendor 7", "specialty": "Rolls and dinner menus", "tier": "active", "notes": "High-volume rolls; Kali menu partner"},
+    {"id": "V8", "label": "Vendor 8", "specialty": "Festival snacks", "tier": "active", "notes": "Beguni / snack SKU partner"},
+    {"id": "V9", "label": "Vendor 9", "specialty": "Festival tray catering", "tier": "active", "notes": "XL lunch trays; rotated off one later dinner for fairness"}
+  ],
+  "events": [
+    {"id": "E1", "name": "Community Day", "date": "2026-06-20", "scale": "M", "headcount": 175, "major": true, "slots": ["lunch", "snacks", "dinner"]},
+    {"id": "E2", "name": "Hike Day", "date": "2026-06", "scale": "S", "headcount": 40, "major": false, "slots": ["dinner"]},
+    {"id": "E3", "name": "Agomoni", "date": "2026-09", "scale": "M", "headcount": 200, "major": true, "slots": ["rolls", "dinner"]},
+    {"id": "E4", "name": "External Artist Night", "date": "2026-10", "scale": "XL", "headcount": 700, "major": true, "slots": ["evening_a", "evening_b", "snacks"]},
+    {"id": "E5", "name": "Sharodotsav Weekend", "date": "2026-10", "scale": "XL", "headcount": 700, "major": true, "slots": ["sat_lunch", "sun_lunch", "evening", "snacks"]},
+    {"id": "E6", "name": "Kali / Deepaboli", "date": "2026-11", "scale": "L", "headcount": 300, "major": true, "slots": ["dinner_a", "dinner_b", "snacks"]}
+  ],
+  "assignments": [
+    {"eventId": "E1", "slot": "lunch", "vendorId": "V2", "score": 4.4},
+    {"eventId": "E1", "slot": "snacks", "vendorId": "V3", "score": 3.8},
+    {"eventId": "E1", "slot": "dinner", "vendorId": "V4", "score": 4.2},
+    {"eventId": "E2", "slot": "dinner", "vendorId": "V5", "score": 3.5},
+    {"eventId": "E3", "slot": "rolls", "vendorId": "V7", "score": 4.0},
+    {"eventId": "E3", "slot": "dinner", "vendorId": "V5", "score": 3.2},
+    {"eventId": "E4", "slot": "evening_a", "vendorId": "V6", "score": 3.6},
+    {"eventId": "E4", "slot": "evening_b", "vendorId": "V7", "score": 4.1},
+    {"eventId": "E5", "slot": "sat_lunch", "vendorId": "V9", "score": 4.0},
+    {"eventId": "E5", "slot": "sun_lunch", "vendorId": "V9", "score": 4.0},
+    {"eventId": "E5", "slot": "evening", "vendorId": "V5", "score": 2.4},
+    {"eventId": "E5", "slot": "snacks", "vendorId": "V8", "score": 3.7},
+    {"eventId": "E6", "slot": "dinner_a", "vendorId": "V7", "score": 4.0},
+    {"eventId": "E6", "slot": "dinner_b", "vendorId": "V6", "score": 3.8},
+    {"eventId": "E6", "slot": "snacks", "vendorId": "V8", "score": 3.5}
+  ],
+  "declined": [
+    {"eventId": "E1", "vendorId": "V1", "reason": "Price over $15 lunch cap"},
+    {"eventId": "E6", "vendorId": "V9", "reason": "Rotation: menu variety, pricing, scale already covered by others"}
+  ]
+}
