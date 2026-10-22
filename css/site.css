@@ -186,8 +186,9 @@ input, select, textarea {
 .slot-card header { display: flex; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.4rem; }
 .vendor-bars { display: grid; gap: 0.55rem; }
 .vendor-bar {
-  display: grid; grid-template-columns: 6.5rem 1fr 3rem; gap: 0.5rem; align-items: center;
+  display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr 3rem; gap: 0.5rem; align-items: center;
 }
+.vendor-bar > span { font-size: 0.88rem; line-height: 1.2; }
 .vendor-bar .fill {
   height: 1.1rem; border-radius: 8px; background: var(--brand);
   transition: width 0.35s ease, background 0.35s ease;

@@ -7,17 +7,17 @@ community:
   public_site_note: "Vendor names default to anonymized labels unless approved below."
 
 publication:
-  # Set true only when the committee agrees a trade name may appear publicly.
+  # Committee request Oct 2026: publish real vendor and event names on the decision site.
   vendors:
-    Vendor 1: false
-    Vendor 2: false
-    Vendor 3: false
-    Vendor 4: false
-    Vendor 5: false
-    Vendor 6: false
-    Vendor 7: false
-    Vendor 8: false
-    Vendor 9: false
+    India Belly: true
+    Mayuri Issaquah: true
+    Twist of Taste by Chandrima: true
+    Joy: true
+    Nola: true
+    Cafe Bollywood: true
+    Sujoy: true
+    Chitralekha: true
+    Kha-Bar: true
 
 must_have_gates:
   - id: veg_nonveg_clarity

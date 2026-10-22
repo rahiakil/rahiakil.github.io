@@ -59,6 +59,39 @@
       <p class="small muted" style="margin-bottom:0;">Full printable page: <a href="rubric.html">Our Rubric</a>. Independent scoring form: <a href="scorecard.html">Scorecard</a>.</p>
     </section>
 
+    <section class="panel" style="margin-top:1.25rem;" aria-labelledby="roster">
+      <h2 id="roster" style="font-family:var(--font-display);margin:0 0 0.35rem;font-size:1.55rem;">2026 events and vendors</h2>
+      <p class="muted small" style="margin-top:0;">Full names from the food chat. Declines and watch notes included.</p>
+      <div class="grid-2" style="margin-top:1rem;">
+        <div>
+          <h3 style="margin-top:0;">Events</h3>
+          <div style="overflow-x:auto;">
+            <table>
+              <thead><tr><th>Event</th><th>Scale</th><th>~Headcount</th><th>Slots</th></tr></thead>
+              <tbody id="eventRoster"></tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-top:0;">Vendors</h3>
+          <div style="overflow-x:auto;">
+            <table>
+              <thead><tr><th>Vendor</th><th>Specialty</th><th>Status</th></tr></thead>
+              <tbody id="vendorRoster"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <h3 style="margin-top:1rem;">Baseline assignments</h3>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead><tr><th>Event</th><th>Slot</th><th>Vendor</th><th>Notes</th></tr></thead>
+          <tbody id="assignmentRoster"></tbody>
+        </table>
+      </div>
+      <div id="declinedRoster" style="margin-top:0.75rem;"></div>
+    </section>
+
     <!-- STEP 2: THEN DISTRIBUTION -->
     <section style="margin-top:1.75rem;" aria-labelledby="assign-next">
       <h2 id="assign-next" style="font-family:var(--font-display);margin:0 0 0.35rem;font-size:1.55rem;">2. Assign vendors for this event</h2>
@@ -96,7 +129,7 @@
   </main>
 
   <footer>
-    <div class="wrap"><p>Baseline assignments are anonymized aggregates from the 2026 food chat. They are a planning aid, not a contract history.</p></div>
+    <div class="wrap"><p>Baseline from the 2026 ECH Food chat. Planning aid for the Uttoron food committee, not a signed contract history.</p></div>
   </footer>
   <script src="js/site.js"></script>
   <script src="js/distribution.js"></script>

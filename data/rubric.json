@@ -1,6 +1,6 @@
 {
   "community": {
-    "name": "Community Cultural Events (Seattle)",
+    "name": "Uttoron (Seattle)",
     "eventsPerYear": "10–11",
     "philosophy": "We choose vendors using menu variety, vendor rotation, pricing, and event scale, alongside quality and on-time reliability. Warm long-term partners still rotate so opportunity stays fair."
   },
@@ -52,16 +52,16 @@
   ],
   "gapsTimeline": [
     {"month": "2026-05", "label": "Survey feedback preferred over chat praise"},
-    {"month": "2026-06", "label": "Hard $15 lunch cap; on-time lunch success"},
-    {"month": "2026-07", "label": "Invoice path friction for snack vendor"},
-    {"month": "2026-09", "label": "Dual-vendor fairness design for 700 seats"},
-    {"month": "2026-10", "label": "Buffer debate; late dinner; four-pillar decline letter"}
+    {"month": "2026-06", "label": "Hard $15 lunch cap; Mayuri lunch on time"},
+    {"month": "2026-07", "label": "Chandrima invoice path friction"},
+    {"month": "2026-09", "label": "Cafe Bollywood + Sujoy dual-vendor design for 700 seats"},
+    {"month": "2026-10", "label": "Buffer debate; Nola late dinner; Kha-Bar four-pillar decline"}
   ],
   "issuesByEvent": [
-    {"event": "Community day", "issues": ["Budget veto on $20 plate", "Payment follow-up weeks later"], "severity": 0.7},
-    {"event": "Agomoni", "issues": ["Staff meal gap noted", "Revenue vs vendor cost check"], "severity": 0.55},
-    {"event": "Sharodotsav", "issues": ["Buffer conflict", "Late dinner / refunds", "Scanning gaps"], "severity": 0.35},
-    {"event": "Artist night", "issues": ["Kids options late", "Quality history debate"], "sentiment": 0.5},
-    {"event": "Kali / Deepaboli", "issues": ["Scale estimate 500 vs 300 cap", "Rotation decline"], "sentiment": 0.6}
+    {"event": "Uttoron Day", "issues": ["India Belly $20 plate vetoed", "Chandrima invoice follow-up"], "sentiment": 0.7},
+    {"event": "Agomoni", "issues": ["Staff meal gap noted", "Sujoy rolls vs Nola revenue check"], "sentiment": 0.55},
+    {"event": "Sharodotsav", "issues": ["Buffer conflict", "Nola late dinner / refunds", "Scanning gaps"], "sentiment": 0.35},
+    {"event": "Anjan Dutta / Bhoomi", "issues": ["Kids options late", "Cafe Bollywood quality/price debate"], "sentiment": 0.5},
+    {"event": "Kali / Deepaboli", "issues": ["Scale estimate 500 vs 300 cap", "Kha-Bar dinner rotation decline"], "sentiment": 0.6}
   ]
 }

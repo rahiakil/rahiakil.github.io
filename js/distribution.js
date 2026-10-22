@@ -14,6 +14,57 @@
   const alertsEl = document.getElementById("alerts");
   const rubricHitEl = document.getElementById("rubricHit");
 
+  // Full event / vendor roster (real names)
+  const eventRoster = document.getElementById("eventRoster");
+  const vendorRoster = document.getElementById("vendorRoster");
+  const assignmentRoster = document.getElementById("assignmentRoster");
+  const declinedRoster = document.getElementById("declinedRoster");
+  if (eventRoster) {
+    eventRoster.innerHTML = data.events
+      .map(
+        (e) =>
+          `<tr><td><strong>${e.name}</strong><div class="muted small">${e.date}${e.notes ? " · " + e.notes : ""}</div></td><td>${e.scale}</td><td>${e.headcount}</td><td>${e.slots.join(", ")}</td></tr>`
+      )
+      .join("");
+  }
+  if (vendorRoster) {
+    vendorRoster.innerHTML = data.vendors
+      .map(
+        (v) =>
+          `<tr><td><strong>${v.label}</strong></td><td>${v.specialty}<div class="muted small">${v.notes || ""}</div></td><td><span class="badge">${v.tier}</span></td></tr>`
+      )
+      .join("");
+  }
+  if (assignmentRoster) {
+    assignmentRoster.innerHTML = data.assignments
+      .map((a) => {
+        const ev = data.events.find((e) => e.id === a.eventId);
+        const v = data.vendors.find((x) => x.id === a.vendorId);
+        return `<tr><td>${ev ? ev.name : a.eventId}</td><td>${a.slot.replaceAll("_", " ")}</td><td><strong>${v ? v.label : a.vendorId}</strong></td><td>${a.score != null ? "score " + a.score : ""}</td></tr>`;
+      })
+      .join("");
+  }
+  if (declinedRoster && data.declined) {
+    declinedRoster.innerHTML =
+      "<h3>Declined / not awarded</h3><ul>" +
+      data.declined
+        .map((d) => {
+          const ev = data.events.find((e) => e.id === d.eventId);
+          const v = data.vendors.find((x) => x.id === d.vendorId);
+          return `<li><strong>${v ? v.label : d.vendorId}</strong> for ${ev ? ev.name : d.eventId}: ${d.reason}</li>`;
+        })
+        .join("") +
+      "</ul>";
+    if (data.historicalNotes && data.historicalNotes.length) {
+      declinedRoster.innerHTML +=
+        "<h3>Prior-season notes referenced in chat</h3><ul>" +
+        data.historicalNotes
+          .map((h) => `<li><strong>${h.vendor}</strong> · ${h.event}: ${h.note}</li>`)
+          .join("") +
+        "</ul>";
+    }
+  }
+
   // Rubric details first (committee reference before assignments)
   const gatesEl = document.getElementById("gates");
   const weightsEl = document.getElementById("weights");
