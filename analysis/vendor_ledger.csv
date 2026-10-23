@@ -1,19 +1,16 @@
-date,event,slot,vendor,score,gates_pass,notes
-2026-06-20,Uttoron Day,lunch,Mayuri Issaquah,4.4,true,Praised lunch boxes; on-time pickup window; ~$10.99–11.99
-2026-06-20,Uttoron Day,snacks,Twist of Taste by Chandrima,3.8,true,Invoice $395.62; Zelle/payment follow-up friction
-2026-06-20,Uttoron Day,dinner,Joy,4.2,true,Last-minute +2 dinner covers accommodated
-2026-06,Hike Day,dinner,Nola,3.5,true,Invoice shared in food chat
-2026-08-25,Magnison venue visit,site_visit,,null,true,Food team representation only; no catering award
-2026-09,Agomoni,rolls,Sujoy,4.0,true,139 rolls; $2585 cost observed
-2026-09,Agomoni,dinner,Nola,3.2,true,Dinner boxes; revenue check before pay (~$2303 food purchase noted)
-2026-10,Anjan Dutta / Bhoomi,evening_a,Cafe Bollywood,3.6,true,Dual vendor fairness at ~700 seats
-2026-10,Anjan Dutta / Bhoomi,evening_b,Sujoy,4.1,true,Dual vendor fairness; price-competitive
-2026-10,Sharodotsav / Durga Puja,sat_lunch,Kha-Bar,4.0,true,Tray catering XL (khichuri/labra etc.)
-2026-10,Sharodotsav / Durga Puja,sun_lunch,Kha-Bar,4.0,true,Tray catering XL
-2026-10,Sharodotsav / Durga Puja,evening,Nola,2.4,false,Late dinner; guests queued at Kha-Bar; refunds discussed
-2026-10,Sharodotsav / Durga Puja,snacks,Chitralekha,3.7,true,Beguni / snack SKU partner
-2026-11,Kali Puja / Uttoron Deepaboli,dinner_a,Sujoy,4.0,true,Menu 1 veg/non-veg
-2026-11,Kali Puja / Uttoron Deepaboli,dinner_b,Cafe Bollywood,3.8,true,Menu 2 / khichuri track in dual plan
-2026-11,Kali Puja / Uttoron Deepaboli,snacks,Chitralekha,3.5,true,Reduced snack variation via Kha-Bar preorder talk
-2026-06-17,Uttoron Day (quote),lunch,India Belly,,false,Declined: $20 plate and $3.50 tea over $15 max
-2026-10-22,Kali Puja / Uttoron Deepaboli (decline),dinner,Kha-Bar,,true,Declined for rotation: menu variety vendor rotation pricing event scale
+﻿date,event,slot,vendor,meal,score,notes
+2026-06-20,Uttoron Day,lunch,Mayuri Issaquah,lunch,4.4,Praised; on-time
+2026-06-20,Uttoron Day,snacks,Twist of Taste by Chandrima,snacks,3.8,Invoice friction
+2026-06-20,Uttoron Day,dinner,Joy,dinner,4.2,Last-minute +2
+2026-06,Hike Day,dinner,Sujoy / Nola,dinner,3.5,Formerly labeled Nola invoice
+2026-09,Agomoni,rolls,Sujoy / Nola,snacks,4.0,139 rolls $2585
+2026-09,Agomoni,dinner,Sujoy / Nola,dinner,3.2,Formerly Nola dinner boxes
+2026-10,Anjan Dutta / Bhoomi,evening_a,Cafe Bollywood,evening_stall,3.6,Dual vendor
+2026-10,Anjan Dutta / Bhoomi,evening_b,Sujoy / Nola,evening_stall,4.1,Dual vendor
+2026-10,Sharodotsav,sat_lunch,Kha-Bar / Chitralekha,lunch,4.0,Trays
+2026-10,Sharodotsav,sun_lunch,Kha-Bar / Chitralekha,lunch,4.0,Trays
+2026-10,Sharodotsav,evening,Sujoy / Nola,dinner,2.4,Late dinner flag (Nola label in chat)
+2026-10,Sharodotsav,snacks,Kha-Bar / Chitralekha,snacks,3.7,Chitralekha label in chat
+2026-11,Kali / Deepaboli,dinner_a,Sujoy / Nola,dinner,4.0,Menu 1
+2026-11,Kali / Deepaboli,dinner_b,Cafe Bollywood,dinner,3.8,Menu 2
+2026-11,Kali / Deepaboli,snacks,Kha-Bar / Chitralekha,snacks,3.5,Snack lane

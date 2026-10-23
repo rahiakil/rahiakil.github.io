@@ -1,167 +1,240 @@
 {
+  "mealTypes": [
+    {"id": "snacks", "label": "Snacks / stalls"},
+    {"id": "lunch", "label": "Lunch (boxes or trays)"},
+    {"id": "dinner", "label": "Dinner (boxes or trays)"},
+    {"id": "evening_stall", "label": "Evening paid stall (artist / XL)"},
+    {"id": "sweets", "label": "Sweets / misti"}
+  ],
+  "dimensions": [
+    {"id": "snacks_fit", "label": "Snacks fit", "desc": "Chop, beguni, rolls-as-snack, kabab sticks, stall snacks"},
+    {"id": "lunch_fit", "label": "Lunch fit", "desc": "Boxes or trays for daytime / volunteer / pujo lunch"},
+    {"id": "dinner_fit", "label": "Dinner fit", "desc": "Evening plated or boxed dinner at scale"},
+    {"id": "sweets_fit", "label": "Sweets fit", "desc": "Misti, malpua, gulab jamun add-ons"},
+    {"id": "price", "label": "Price band fit", "desc": "Ability to land in community bands (~$11–15 lunch, festival SKUs ~$15–21)"},
+    {"id": "quality", "label": "Quality track record", "desc": "Taste, authenticity, prior praise or complaints"},
+    {"id": "reliability", "label": "On-time reliability", "desc": "Delivery/setup windows; late flags hurt XL dinners"},
+    {"id": "scale", "label": "Scale capacity", "desc": "Comfort from small boxes to 600–700 footfall"},
+    {"id": "rotation_need", "label": "Rotation credit", "desc": "Higher if under-used this year; lower if already heavy on majors"},
+    {"id": "flexibility", "label": "Flexibility", "desc": "Last-minute headcount, dual menus, kids options"}
+  ],
   "vendors": [
     {
-      "id": "V1",
+      "id": "V_india_belly",
       "label": "India Belly",
+      "aka": [],
+      "source": "food_chat",
       "specialty": "Plate lunch + tea",
+      "preferredMeals": ["lunch"],
       "tier": "quote_only",
-      "notes": "Quoted $20 plate and $3.50 tea for Uttoron Day staff lunch; declined on price (max $15)."
+      "scores": {
+        "snacks_fit": 1, "lunch_fit": 3, "dinner_fit": 2, "sweets_fit": 2,
+        "price": 1, "quality": 3, "reliability": 3, "scale": 2, "rotation_need": 4, "flexibility": 2
+      },
+      "majorSlots2026": 0,
+      "notes": "Quoted $20 plate + $3.50 tea for Uttoron Day; declined on $15 lunch cap.",
+      "evidence": "ECH-Food: India Belly quote rejected"
     },
     {
-      "id": "V2",
+      "id": "V_mayuri",
       "label": "Mayuri Issaquah",
+      "aka": ["Mayuri"],
+      "source": "food_chat",
       "specialty": "Lunch boxes",
+      "preferredMeals": ["lunch"],
       "tier": "active",
-      "notes": "Uttoron Day lunch (~$10.99 veg / $11.99 chicken); praised as excellent; on-time pickup."
+      "scores": {
+        "snacks_fit": 2, "lunch_fit": 5, "dinner_fit": 2, "sweets_fit": 1,
+        "price": 5, "quality": 5, "reliability": 5, "scale": 3, "rotation_need": 3, "flexibility": 3
+      },
+      "majorSlots2026": 1,
+      "notes": "Uttoron Day lunch (~$10.99–11.99); excellent; on-time pickup.",
+      "evidence": "ECH-Food: Mayuri selected and praised"
     },
     {
-      "id": "V3",
+      "id": "V_chandrima",
       "label": "Twist of Taste by Chandrima",
+      "aka": ["Chandrima"],
+      "source": "food_chat",
       "specialty": "Bengali snack boxes",
+      "preferredMeals": ["snacks"],
       "tier": "active",
-      "notes": "Uttoron Day snacks: veg chop / jackfruit cutlet / fish chop; invoice $395.62; payment follow-up friction."
+      "scores": {
+        "snacks_fit": 5, "lunch_fit": 2, "dinner_fit": 1, "sweets_fit": 2,
+        "price": 4, "quality": 4, "reliability": 4, "scale": 3, "rotation_need": 3, "flexibility": 3
+      },
+      "majorSlots2026": 1,
+      "notes": "Uttoron Day snacks $8.99–11.99; invoice $395.62; payment follow-up friction.",
+      "evidence": "ECH-Food: Chandrima snacks invoice"
     },
     {
-      "id": "V4",
+      "id": "V_joy",
       "label": "Joy",
+      "aka": [],
+      "source": "food_chat",
       "specialty": "Dinner boxes",
+      "preferredMeals": ["dinner", "lunch"],
       "tier": "active",
-      "notes": "Uttoron Day dinner; accommodated last-minute +2 covers."
+      "scores": {
+        "snacks_fit": 1, "lunch_fit": 3, "dinner_fit": 4, "sweets_fit": 1,
+        "price": 4, "quality": 4, "reliability": 4, "scale": 3, "rotation_need": 4, "flexibility": 5
+      },
+      "majorSlots2026": 1,
+      "notes": "Uttoron Day dinner; last-minute +2 covers accommodated.",
+      "evidence": "ECH-Food: Joy last-minute flexibility"
     },
     {
-      "id": "V5",
-      "label": "Nola",
-      "specialty": "Dinner catering / dinner boxes",
+      "id": "V_sujoy_nola",
+      "label": "Sujoy / Nola",
+      "aka": ["Sujoy", "Sujay", "Nola"],
+      "source": "food_chat+committee",
+      "specialty": "Rolls, dinner boxes, evening catering (same partner)",
+      "preferredMeals": ["dinner", "evening_stall", "snacks", "lunch"],
       "tier": "watch",
-      "notes": "Hike Day invoice; Agomoni dinner boxes; Sharodotsav evening dinner. Late delivery feedback on festival evening; refunds discussed."
+      "scores": {
+        "snacks_fit": 4, "lunch_fit": 3, "dinner_fit": 4, "sweets_fit": 2,
+        "price": 4, "quality": 4, "reliability": 2, "scale": 5, "rotation_need": 1, "flexibility": 4
+      },
+      "majorSlots2026": 5,
+      "notes": "Committee: Sujoy and Nola are the same partner. Chat shows Agomoni rolls ($2,585/139), dinner boxes, Anjan Dutta evening, Kali menu 1, and Sharodotsav evening late-delivery flag under Nola name.",
+      "evidence": "ECH-Food: Sujoy rolls + Nola dinners; committee merge"
     },
     {
-      "id": "V6",
+      "id": "V_bollywood",
       "label": "Cafe Bollywood",
-      "specialty": "Evening stall (biryani / chap / Chinese)",
+      "aka": ["Bolly Cafe"],
+      "source": "food_chat",
+      "specialty": "Evening stall: biryani / chap / Chinese",
+      "preferredMeals": ["evening_stall", "dinner"],
       "tier": "active",
-      "notes": "Boisakhi: mixed salty biryani feedback and higher price. Re-engaged for Anjan Dutta/Bhoomi dual-vendor night and Kali Puja menu 2."
+      "scores": {
+        "snacks_fit": 2, "lunch_fit": 2, "dinner_fit": 4, "sweets_fit": 1,
+        "price": 3, "quality": 3, "reliability": 3, "scale": 5, "rotation_need": 2, "flexibility": 3
+      },
+      "majorSlots2026": 2,
+      "notes": "Boisakhi salty biryani mixed feedback; re-engaged for dual-vendor XL nights (Anjan Dutta, Kali menu 2).",
+      "evidence": "ECH-Food: dual-vendor fairness + quality debate"
     },
     {
-      "id": "V7",
-      "label": "Sujoy",
-      "specialty": "Rolls and dinner menus",
+      "id": "V_khabar_chitralekha",
+      "label": "Kha-Bar / Chitralekha",
+      "aka": ["Khabar", "Kha-Bar", "Chitralekha"],
+      "source": "food_chat+committee",
+      "specialty": "Festival trays + festival snacks (same partner)",
+      "preferredMeals": ["lunch", "snacks", "sweets", "dinner"],
       "tier": "active",
-      "notes": "Agomoni rolls: 139 pcs / $2,585. Anjan Dutta/Bhoomi evening partner. Kali Puja menu 1 (aligned as Sujay in later notes)."
+      "scores": {
+        "snacks_fit": 5, "lunch_fit": 5, "dinner_fit": 3, "sweets_fit": 4,
+        "price": 3, "quality": 4, "reliability": 4, "scale": 5, "rotation_need": 2, "flexibility": 4
+      },
+      "majorSlots2026": 3,
+      "notes": "Committee: Chitralekha and Kha-Bar are the same. Chat shows Sharodotsav tray lunches, beguni/snack SKUs, and Kali dinner decline for rotation.",
+      "evidence": "ECH-Food: Kha-Bar trays + Chitralekha snacks; committee merge"
     },
     {
-      "id": "V8",
-      "label": "Chitralekha",
-      "specialty": "Festival snacks (beguni and snack SKUs)",
+      "id": "V_stab",
+      "label": "Stab Kabab",
+      "aka": ["Stab"],
+      "source": "committee",
+      "specialty": "Kabab / grill (snacks and evening)",
+      "preferredMeals": ["snacks", "evening_stall"],
       "tier": "active",
-      "notes": "Sharodotsav snack / beguni options; Kali Puja snack pre-order discussion (reduced variation)."
+      "scores": {
+        "snacks_fit": 5, "lunch_fit": 2, "dinner_fit": 3, "sweets_fit": 1,
+        "price": 3, "quality": 3, "reliability": 3, "scale": 3, "rotation_need": 5, "flexibility": 3
+      },
+      "majorSlots2026": 0,
+      "notes": "Not named in ECH-Food or 2027-team chat exports. Added by committee. Scores are starting defaults; tune after first event.",
+      "evidence": "committee-supplied (thin chat evidence)"
     },
     {
-      "id": "V9",
-      "label": "Kha-Bar",
-      "specialty": "Festival tray catering (khichuri, labra, polau, misti)",
+      "id": "V_marinade",
+      "label": "Marinade",
+      "aka": [],
+      "source": "committee",
+      "specialty": "Marinated mains / catering",
+      "preferredMeals": ["lunch", "dinner", "evening_stall"],
       "tier": "active",
-      "notes": "Sharodotsav weekend tray lunches (XL). Courteous decline for Kali/Deepaboli dinner for rotation: menu variety, vendor rotation, pricing, event scale."
+      "scores": {
+        "snacks_fit": 2, "lunch_fit": 4, "dinner_fit": 4, "sweets_fit": 1,
+        "price": 3, "quality": 3, "reliability": 3, "scale": 3, "rotation_need": 5, "flexibility": 3
+      },
+      "majorSlots2026": 0,
+      "notes": "Not named in chat exports. Committee-supplied. Prefer for lunch/dinner trials at M scale first.",
+      "evidence": "committee-supplied (thin chat evidence)"
+    },
+    {
+      "id": "V_saneyee",
+      "label": "Saneyee",
+      "aka": ["Sanyee"],
+      "source": "committee",
+      "specialty": "Sweets / misti and light snacks",
+      "preferredMeals": ["sweets", "snacks"],
+      "tier": "active",
+      "scores": {
+        "snacks_fit": 4, "lunch_fit": 1, "dinner_fit": 1, "sweets_fit": 5,
+        "price": 3, "quality": 3, "reliability": 3, "scale": 2, "rotation_need": 5, "flexibility": 3
+      },
+      "majorSlots2026": 0,
+      "notes": "Not named in chat exports. Committee-supplied. Strong sweets-lane candidate.",
+      "evidence": "committee-supplied (thin chat evidence)"
+    },
+    {
+      "id": "V_moumita_biswas",
+      "label": "Moumita Biswas",
+      "aka": [],
+      "source": "committee",
+      "specialty": "Community / home-style catering",
+      "preferredMeals": ["snacks", "lunch", "sweets"],
+      "tier": "active",
+      "scores": {
+        "snacks_fit": 4, "lunch_fit": 3, "dinner_fit": 2, "sweets_fit": 3,
+        "price": 4, "quality": 3, "reliability": 3, "scale": 2, "rotation_need": 5, "flexibility": 4
+      },
+      "majorSlots2026": 0,
+      "notes": "Not named as a food vendor in chat exports (Dayna Biswas appears in 2027 planning in a school context only). Added by committee as a food partner.",
+      "evidence": "committee-supplied (thin chat evidence)"
     }
   ],
   "events": [
-    {
-      "id": "E1",
-      "name": "Uttoron Day",
-      "date": "2026-06-20",
-      "scale": "M",
-      "headcount": 175,
-      "major": true,
-      "slots": ["lunch", "snacks", "dinner"],
-      "notes": "PAC venue; staff/volunteer lunch boxes; snack pre-sale; dinner for cast/staff."
-    },
-    {
-      "id": "E2",
-      "name": "Hike Day",
-      "date": "2026-06",
-      "scale": "S",
-      "headcount": 40,
-      "major": false,
-      "slots": ["dinner"],
-      "notes": "Nola invoice shared in food chat."
-    },
-    {
-      "id": "E3",
-      "name": "Magnison venue visit",
-      "date": "2026-08-25",
-      "scale": "S",
-      "headcount": 20,
-      "major": false,
-      "slots": ["site_visit"],
-      "notes": "Food team representation for venue walkthrough; no catering award in chat."
-    },
-    {
-      "id": "E4",
-      "name": "Agomoni",
-      "date": "2026-09",
-      "scale": "M",
-      "headcount": 200,
-      "major": true,
-      "slots": ["rolls", "dinner"],
-      "notes": "Sujoy rolls + Nola dinner boxes; food sales ~$4,829; staff meal gap noted."
-    },
-    {
-      "id": "E5",
-      "name": "Anjan Dutta / Bhoomi (external artist night)",
-      "date": "2026-10",
-      "scale": "XL",
-      "headcount": 700,
-      "major": true,
-      "slots": ["evening_a", "evening_b", "snacks"],
-      "notes": "Dual vendors for fairness and choice at ~600–700 seats; Cafe Bollywood + Sujoy; snack vendors planned."
-    },
-    {
-      "id": "E6",
-      "name": "Sharodotsav / Durga Puja weekend",
-      "date": "2026-10",
-      "scale": "XL",
-      "headcount": 700,
-      "major": true,
-      "slots": ["sat_lunch", "sun_lunch", "evening", "snacks"],
-      "notes": "Kha-Bar trays; Nola evening dinner (late); Chitralekha snacks; large buffer/tray debates Oct 7–8."
-    },
-    {
-      "id": "E7",
-      "name": "Kali Puja / Uttoron Deepaboli",
-      "date": "2026-11",
-      "scale": "L",
-      "headcount": 300,
-      "major": true,
-      "slots": ["dinner_a", "dinner_b", "snacks"],
-      "notes": "Dinner cap ~300; Sujoy menu 1 + Cafe Bollywood menu 2; Kha-Bar declined for dinner rotation; kids pizza; misti add-on."
-    }
+    {"id": "E1", "name": "Uttoron Day", "date": "2026-06-20", "scale": "M", "headcount": 175, "major": true, "year": 2026},
+    {"id": "E2", "name": "Hike Day", "date": "2026-06", "scale": "S", "headcount": 40, "major": false, "year": 2026},
+    {"id": "E3", "name": "Magnison venue visit", "date": "2026-08-25", "scale": "S", "headcount": 20, "major": false, "year": 2026},
+    {"id": "E4", "name": "Agomoni", "date": "2026-09", "scale": "M", "headcount": 200, "major": true, "year": 2026},
+    {"id": "E5", "name": "Anjan Dutta / Bhoomi", "date": "2026-10", "scale": "XL", "headcount": 700, "major": true, "year": 2026},
+    {"id": "E6", "name": "Sharodotsav / Durga Puja", "date": "2026-10", "scale": "XL", "headcount": 700, "major": true, "year": 2026},
+    {"id": "E7", "name": "Kali Puja / Uttoron Deepaboli", "date": "2026-11", "scale": "L", "headcount": 300, "major": true, "year": 2026},
+    {"id": "E2027_1", "name": "Saraswati Pujo 2027", "date": "2027-02-06", "scale": "M", "headcount": 250, "major": true, "year": 2027},
+    {"id": "E2027_2", "name": "Women's Day 2027 (tentative)", "date": "2027-03-07", "scale": "S", "headcount": 80, "major": false, "year": 2027},
+    {"id": "E2027_3", "name": "Boishakhi 2027", "date": "2027-04-24", "scale": "L", "headcount": 400, "major": true, "year": 2027},
+    {"id": "E2027_4", "name": "External artist (Ritwick/Anirban track)", "date": "2027-05-22", "scale": "XL", "headcount": 600, "major": true, "year": 2027},
+    {"id": "E2027_5", "name": "Summer Picnic 2027", "date": "2027-08-21", "scale": "M", "headcount": 200, "major": true, "year": 2027},
+    {"id": "E2027_6", "name": "Sharod Utsav 2027", "date": "2027-10-08", "scale": "XL", "headcount": 700, "major": true, "year": 2027},
+    {"id": "E2027_7", "name": "Kali Pujo 2027", "date": "2027-11-04", "scale": "L", "headcount": 300, "major": true, "year": 2027}
   ],
   "assignments": [
-    {"eventId": "E1", "slot": "lunch", "vendorId": "V2", "score": 4.4},
-    {"eventId": "E1", "slot": "snacks", "vendorId": "V3", "score": 3.8},
-    {"eventId": "E1", "slot": "dinner", "vendorId": "V4", "score": 4.2},
-    {"eventId": "E2", "slot": "dinner", "vendorId": "V5", "score": 3.5},
-    {"eventId": "E4", "slot": "rolls", "vendorId": "V7", "score": 4.0},
-    {"eventId": "E4", "slot": "dinner", "vendorId": "V5", "score": 3.2},
-    {"eventId": "E5", "slot": "evening_a", "vendorId": "V6", "score": 3.6},
-    {"eventId": "E5", "slot": "evening_b", "vendorId": "V7", "score": 4.1},
-    {"eventId": "E6", "slot": "sat_lunch", "vendorId": "V9", "score": 4.0},
-    {"eventId": "E6", "slot": "sun_lunch", "vendorId": "V9", "score": 4.0},
-    {"eventId": "E6", "slot": "evening", "vendorId": "V5", "score": 2.4},
-    {"eventId": "E6", "slot": "snacks", "vendorId": "V8", "score": 3.7},
-    {"eventId": "E7", "slot": "dinner_a", "vendorId": "V7", "score": 4.0},
-    {"eventId": "E7", "slot": "dinner_b", "vendorId": "V6", "score": 3.8},
-    {"eventId": "E7", "slot": "snacks", "vendorId": "V8", "score": 3.5}
+    {"eventId": "E1", "slot": "lunch", "vendorId": "V_mayuri", "meal": "lunch"},
+    {"eventId": "E1", "slot": "snacks", "vendorId": "V_chandrima", "meal": "snacks"},
+    {"eventId": "E1", "slot": "dinner", "vendorId": "V_joy", "meal": "dinner"},
+    {"eventId": "E2", "slot": "dinner", "vendorId": "V_sujoy_nola", "meal": "dinner"},
+    {"eventId": "E4", "slot": "rolls", "vendorId": "V_sujoy_nola", "meal": "snacks"},
+    {"eventId": "E4", "slot": "dinner", "vendorId": "V_sujoy_nola", "meal": "dinner"},
+    {"eventId": "E5", "slot": "evening_a", "vendorId": "V_bollywood", "meal": "evening_stall"},
+    {"eventId": "E5", "slot": "evening_b", "vendorId": "V_sujoy_nola", "meal": "evening_stall"},
+    {"eventId": "E6", "slot": "sat_lunch", "vendorId": "V_khabar_chitralekha", "meal": "lunch"},
+    {"eventId": "E6", "slot": "sun_lunch", "vendorId": "V_khabar_chitralekha", "meal": "lunch"},
+    {"eventId": "E6", "slot": "evening", "vendorId": "V_sujoy_nola", "meal": "dinner"},
+    {"eventId": "E6", "slot": "snacks", "vendorId": "V_khabar_chitralekha", "meal": "snacks"},
+    {"eventId": "E7", "slot": "dinner_a", "vendorId": "V_sujoy_nola", "meal": "dinner"},
+    {"eventId": "E7", "slot": "dinner_b", "vendorId": "V_bollywood", "meal": "dinner"},
+    {"eventId": "E7", "slot": "snacks", "vendorId": "V_khabar_chitralekha", "meal": "snacks"}
   ],
   "declined": [
-    {"eventId": "E1", "vendorId": "V1", "reason": "Price over $15 lunch cap ($20 plate; $3.50 tea)"},
-    {"eventId": "E7", "vendorId": "V9", "reason": "Rotation: menu variety, vendor rotation, pricing, and event scale covered by Sujoy + Cafe Bollywood"}
+    {"eventId": "E1", "vendorId": "V_india_belly", "reason": "Price over $15 lunch cap"},
+    {"eventId": "E7", "vendorId": "V_khabar_chitralekha", "reason": "Rotation: dinner went to Sujoy/Nola + Cafe Bollywood"}
   ],
-  "historicalNotes": [
-    {
-      "event": "Boisakhi (prior season, referenced Sep 2026)",
-      "vendor": "Cafe Bollywood",
-      "note": "Biryani salty / mixed feedback; price higher than alternatives. Cited when weighing Anjan Dutta/Bhoomi award."
-    }
+  "merges": [
+    {"keep": "V_sujoy_nola", "merged": ["Sujoy", "Sujay", "Nola"], "note": "Committee confirmed same partner"},
+    {"keep": "V_khabar_chitralekha", "merged": ["Kha-Bar", "Khabar", "Chitralekha"], "note": "Committee confirmed same partner"}
   ]
 }
